@@ -7,16 +7,16 @@ public class TellerGUI implements ActionListener{
     private JLabel lbl1, lbl2;
     private JTextField txt1, txt2;
     private JButton bnw, bnd, bne;
+    private Account ac;
     
-    Account ac = new Account(6000,"61070033");
-    
-    public TellerGUI(){
+    public TellerGUI(Account ac){
+        this.ac = ac;
         f = new JFrame();
         p1 = new JPanel();
         p2 = new JPanel();
         p3 = new JPanel();
         lbl1 = new JLabel("Balance");
-        txt1 = new JTextField("6000");
+        txt1 = new JTextField((int)ac.getBalance()+"");
         p1.setLayout(new GridLayout(1,2));
         txt1.setEditable(false);
         p1.add(lbl1);
