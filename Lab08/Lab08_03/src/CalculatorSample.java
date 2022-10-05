@@ -1,6 +1,6 @@
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
+import java.awt.event.*;
 public class CalculatorSample implements ActionListener{
     protected JFrame f;
     protected JButton bn1, bn2, bn3, bn4, bn5, bn6, bn7, bn8, bn9, bnp, bnm, bnt, bnd, bne, bnc, bn0;
@@ -41,6 +41,13 @@ public class CalculatorSample implements ActionListener{
         p1.add(bn2); p1.add(bn3); p1.add(bnt);
         p1.add(bn0); p1.add(bnc); p1.add(bne);
         p1.add(bnd);
+        
+//        bn1.addActionListener(ah); bn2.addActionListener(ah); bn3.addActionListener(ah);
+//        bn4.addActionListener(ah); bn5.addActionListener(ah); bn6.addActionListener(ah);
+//        bn7.addActionListener(ah); bn8.addActionListener(ah); bn9.addActionListener(ah);
+//        bn0.addActionListener(ah); bnp.addActionListener(ah); bnm.addActionListener(ah);
+//        bnt.addActionListener(ah); bnd.addActionListener(ah); bnc.addActionListener(ah);
+//        bne.addActionListener(ah);
         
         bn1.addActionListener(this); bn2.addActionListener(this); bn3.addActionListener(this);
         bn4.addActionListener(this); bn5.addActionListener(this); bn6.addActionListener(this);
