@@ -8,7 +8,7 @@ public class CalculatorSample implements ActionListener{
     protected JTextField txt;
     private int temp = 0;
     private String check = "";
-//    private ActionHandler ah = new ActionHandler();
+    private boolean check2 = false;
     public CalculatorSample(){
         f = new JFrame("My Calculator");
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -42,13 +42,6 @@ public class CalculatorSample implements ActionListener{
         p1.add(bn0); p1.add(bnc); p1.add(bne);
         p1.add(bnd);
         
-//        bn1.addActionListener(ah); bn2.addActionListener(ah); bn3.addActionListener(ah);
-//        bn4.addActionListener(ah); bn5.addActionListener(ah); bn6.addActionListener(ah);
-//        bn7.addActionListener(ah); bn8.addActionListener(ah); bn9.addActionListener(ah);
-//        bn0.addActionListener(ah); bnp.addActionListener(ah); bnm.addActionListener(ah);
-//        bnt.addActionListener(ah); bnd.addActionListener(ah); bnc.addActionListener(ah);
-//        bne.addActionListener(ah);
-        
         bn1.addActionListener(this); bn2.addActionListener(this); bn3.addActionListener(this);
         bn4.addActionListener(this); bn5.addActionListener(this); bn6.addActionListener(this);
         bn7.addActionListener(this); bn8.addActionListener(this); bn9.addActionListener(this);
@@ -65,45 +58,12 @@ public class CalculatorSample implements ActionListener{
         
     }
     public void actionPerformed(ActionEvent ev){
-        if(ev.getSource().equals(bn0)){
-            txt.setText(txt.getText()+"0");
-        }else if(ev.getSource().equals(bn1)){
-            txt.setText(txt.getText()+"1");
-        }else if(ev.getSource().equals(bn2)){
-            txt.setText(txt.getText()+"2");
-        }else if(ev.getSource().equals(bn3)){
-            txt.setText(txt.getText()+"3");
-        }else if(ev.getSource().equals(bn4)){
-            txt.setText(txt.getText()+"4");
-        }else if(ev.getSource().equals(bn5)){
-            txt.setText(txt.getText()+"5");
-        }else if(ev.getSource().equals(bn6)){
-            txt.setText(txt.getText()+"6");
-        }else if(ev.getSource().equals(bn7)){
-            txt.setText(txt.getText()+"7");
-        }else if(ev.getSource().equals(bn8)){
-            txt.setText(txt.getText()+"8");
-        }else if(ev.getSource().equals(bn9)){
-            txt.setText(txt.getText()+"9");
-        }else if(ev.getSource().equals(bnp)){
+        if((ev.getSource().equals(bnp)||ev.getSource().equals(bnm)||ev.getSource().equals(bnt)||ev.getSource().equals(bnd))&&check.equals("")){
+            check = ev.getActionCommand();
+            check2 = true;
             temp = Integer.parseInt(txt.getText());
-            check = "+";
-            txt.setText("");
-        }else if(ev.getSource().equals(bnm)){
-            temp = Integer.parseInt(txt.getText());
-            check = "-";
-            txt.setText("");
-        }else if(ev.getSource().equals(bnt)){
-            temp = Integer.parseInt(txt.getText());
-            check = "X";
-            txt.setText("");
-        }else if(ev.getSource().equals(bnd)){
-            temp = Integer.parseInt(txt.getText());
-            check = "/";
-            txt.setText("");
-        }else if(ev.getSource().equals(bnc)){
-            temp = 0;
-            txt.setText("");
+        }else if((ev.getSource().equals(bnp)||ev.getSource().equals(bnm)||ev.getSource().equals(bnt)||ev.getSource().equals(bnd))&&!check.equals("")){
+            check = ev.getActionCommand();
         }else if(ev.getSource().equals(bne)){
             if(check.equals("+")){
                 temp += Integer.parseInt(this.txt.getText());
@@ -115,7 +75,21 @@ public class CalculatorSample implements ActionListener{
                 temp /= Integer.parseInt(this.txt.getText());
             }
             txt.setText(temp+"");
+            check = "";
+        }else if(ev.getSource().equals(bnc)){
+            txt.setText("");
+            temp = 0;
         }
+        else if(!check.equals("")){
+            if(check2){
+                txt.setText("");
+                check2 = false;
+            }
+            txt.setText(txt.getText()+ev.getActionCommand());  
+        }else{
+            txt.setText(txt.getText()+ev.getActionCommand());
+        }
+        
         System.out.println(temp);
     }
 }

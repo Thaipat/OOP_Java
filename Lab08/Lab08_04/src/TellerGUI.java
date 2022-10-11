@@ -43,17 +43,20 @@ public class TellerGUI implements ActionListener{
         
         bnw.addActionListener(this);
         bnd.addActionListener(this);
+        bne.addActionListener(this);
     }
     public void actionPerformed(ActionEvent ev){
             if(ev.getSource().equals(bnw)){
-                if(ac.getBalance() >= Integer.parseInt(txt2.getText())){
+                if(ac.getBalance() >= Integer.parseInt(txt2.getText()) && Integer.parseInt(txt2.getText()) >= 0){
                     ac.setBalance(ac.getBalance()-Integer.parseInt(txt2.getText()));
                     txt1.setText((int)ac.getBalance()+"");
                 }
-            }else if(ev.getSource().equals(bnd)){
+            }else if(ev.getSource().equals(bnd) && Integer.parseInt(txt2.getText()) >= 0){
                 System.out.println(ac.getBalance());
                 ac.setBalance(ac.getBalance()+Integer.parseInt(txt2.getText()));
                 txt1.setText((int)ac.getBalance()+"");
+            }else if(ev.getSource().equals(bne)){
+                System.exit(0);
             }
         }
 }

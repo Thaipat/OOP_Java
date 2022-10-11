@@ -56,6 +56,5 @@ public class App01 implements ActionListener{
         }else if(ae.getSource().equals(btn4)){
             txt3.setText((Integer.parseInt(txt1.getText())/Integer.parseInt(txt2.getText()))+"");
         }
-//        System.out.println(ae.getSource().equals(btn1));
     }
 }
