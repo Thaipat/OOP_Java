@@ -55,7 +55,6 @@ public class CalculatorSample implements ActionListener{
         f.setSize(400,300);
         f.setVisible(true);
         f.setLocation(580,270);
-        
     }
     public void actionPerformed(ActionEvent ev){
         if((ev.getSource().equals(bnp)||ev.getSource().equals(bnm)||ev.getSource().equals(bnt)||ev.getSource().equals(bnd))&&check.equals("")){
