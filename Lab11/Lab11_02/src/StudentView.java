@@ -39,6 +39,10 @@ public class StudentView implements ActionListener, WindowListener{
             idTextField.setText(s.getID()+"");
             nameTextField.setText(s.getName());
             moneyTextField.setText(s.getMoney()+"");
+        }else{
+            idTextField.setText("");
+            nameTextField.setText("");
+            moneyTextField.setText(0+"");
         }
         
         idPanel.setLayout(new GridLayout(1,2));
@@ -97,6 +101,8 @@ public class StudentView implements ActionListener, WindowListener{
             ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);){
             objectOutput.writeObject(new Student(nameTextField.getText(), Integer.parseInt(idTextField.getText()), Integer.parseInt(moneyTextField.getText())));
         }catch(IOException e){
+            System.out.print(e);
+        }catch(Exception e){
             System.out.print(e);
         }
     }
