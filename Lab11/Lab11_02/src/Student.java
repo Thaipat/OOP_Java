@@ -4,9 +4,7 @@ public class Student implements Serializable{
     private int ID;
     private int money;
     public Student(){
-        name = "";
-        ID = 0;
-        money = 0;
+        this("", 0, 0);
     }
     public Student(String name, int ID, int money){
         this.name = name;
