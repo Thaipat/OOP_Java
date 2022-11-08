@@ -1,14 +1,19 @@
 import java.awt.*;
 import javax.swing.*;
-public class MyFrame {
+import java.awt.event.*;
+public class MyFrame implements MouseListener{
     private JFrame window;
     private MyClock clock;
     private Thread t;
+    private int checkPause = 0;
+
     public MyFrame(){
         window = new JFrame();
         clock = new MyClock();
         t = new Thread(clock);
         t.start();
+        
+        clock.addMouseListener(this);
         
         window.setLayout(new FlowLayout());
         window.add(clock);
@@ -21,4 +26,19 @@ public class MyFrame {
     public static void main(String[] args){
         new MyFrame();
     }
+    
+    public synchronized void mouseClicked(MouseEvent ev){
+        if(checkPause%2==0){
+            clock.pauseThread();
+        }
+        else{
+            clock.resumeThread();
+        }
+        checkPause++;
+    }
+    public void mouseEntered(MouseEvent ev){}
+    public void mouseExited(MouseEvent ev){}
+    public void mousePressed(MouseEvent ev){}
+    public void mouseReleased(MouseEvent ev){}
+    
 }
