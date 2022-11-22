@@ -16,5 +16,9 @@ public class BookModel {
     public ArrayList getBooks() {
         return books;
     }
+
+    public void setBooks(ArrayList books) {
+        this.books = books;
+    }
     
 }
