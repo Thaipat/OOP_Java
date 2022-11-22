@@ -1,7 +1,5 @@
 import java.awt.event.*;
 import javax.swing.*;
-import java.io.*;
-import java.util.*;
 public class BookController implements ActionListener, WindowListener{
     BookView bookView;
     BookAdd bookAdd;
@@ -62,7 +60,6 @@ public class BookController implements ActionListener, WindowListener{
                 bookView.getTypeComboBox().setSelectedItem(((Book)(model.getBooks().get(index))).getType());
                 bookView.getCollectionTextField().setText(index+"");
             }
-            
         }else if(ae.getActionCommand() == ">>>" && index+1 < model.getBooks().size()){
             index++;
             bookView.getNameTextField().setText(((Book)(model.getBooks().get(index))).getName());
@@ -71,27 +68,9 @@ public class BookController implements ActionListener, WindowListener{
             bookView.getCollectionTextField().setText(index+"");
         }
     }
-    public void windowOpened(WindowEvent ev){
-        try(FileInputStream fin = new FileInputStream("Book.dat");
-            ObjectInputStream in = new ObjectInputStream(fin);){
-            try{
-               model.setBooks((ArrayList) in.readObject()); 
-            }catch(Exception e){
-                System.out.print(e);
-            }
-        }catch(IOException e){
-            System.out.print(e);
-        }
-    }
+    public void windowOpened(WindowEvent ev){model.loadFile();}
     public void windowClosed(WindowEvent ev){}
-    public void windowClosing(WindowEvent ev){
-        try(FileOutputStream fOut = new FileOutputStream("Book.dat");
-            ObjectOutputStream oout = new ObjectOutputStream(fOut);){
-            oout.writeObject((ArrayList)(model.getBooks()));
-        }catch(IOException e){
-            System.out.print(e);
-        }
-    }
+    public void windowClosing(WindowEvent ev){model.saveFile();}
     public void windowIconified(WindowEvent ev){}
     public void windowDeiconified(WindowEvent ev){}
     public void windowActivated(WindowEvent ev){}

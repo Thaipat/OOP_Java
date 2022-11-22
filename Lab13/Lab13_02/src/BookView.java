@@ -14,8 +14,8 @@ public class BookView {
         nameLabel = new JLabel(" Name");
         priceLabel = new JLabel(" Price");
         typeLabel = new JLabel(" Type");
-        nameTextField = new JTextField();
-        priceTextField = new JTextField();
+        nameTextField = new JTextField(null);
+        priceTextField = new JTextField(null);
         collectionTextField = new JTextField("0");
         typeComboBox = new JComboBox(allCombo);
         leftButton = new JButton("<<<");
