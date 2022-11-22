@@ -8,16 +8,11 @@ public class BookController implements ActionListener, WindowListener{
     BookModel model;
     Book book;
     private int index;
-    private String bookName, bookType;
-    private double bookPrice;
     
     public BookController(){
         bookView = new BookView();
         model = new BookModel();
         index = Integer.parseInt(bookView.getCollectionTextField().getText());
-        bookName = ((Book)(model.getBooks().get(index))).getName();
-        bookType = ((Book)(model.getBooks().get(index))).getType();
-        bookPrice = ((Book)(model.getBooks().get(index))).getPrice();
         
         bookView.getAddButton().addActionListener(this);
         bookView.getUpdateButton().addActionListener(this);
