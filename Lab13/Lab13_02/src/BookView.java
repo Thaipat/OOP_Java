@@ -1,12 +1,12 @@
 import javax.swing.*;
 import java.awt.*;
 public class BookView {
-    JLabel nameLabel, priceLabel, typeLabel;
-    JTextField nameTextField, priceTextField, collectionTextField;
-    JComboBox typeComboBox;
-    JButton leftButton, rightButton, addButton, updateButton, deleteButton;
-    JFrame bookViewWindow;
-    JPanel collectionPanel, orderingPanel, bottomPanel, topPanel;
+    private JLabel nameLabel, priceLabel, typeLabel;
+    private JTextField nameTextField, priceTextField, collectionTextField;
+    private JComboBox typeComboBox;
+    private JButton leftButton, rightButton, addButton, updateButton, deleteButton;
+    private JFrame bookViewWindow;
+    private JPanel collectionPanel, orderingPanel, bottomPanel, topPanel;
     private String[] allCombo = {"General", "Computer", "Math&Sci", "Photo"};
     
     public BookView(){
